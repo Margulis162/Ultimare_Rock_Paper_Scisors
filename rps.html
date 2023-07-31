@@ -11,12 +11,41 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+
+        <!--CSS-->
+        <style>
+
+            html{
+                margin:0px;
+                padding:0px;
+                box-sizing: border-box;
+            }
+
+            *, *::before, *::after{
+                margin:inherit;
+                padding:inherit;
+                box-sizing:inherit;
+            }
+
+
+        </style>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+       <div class="input">
+            <!--so the name property is here to make em work together-->
+           <input  type="radio" id="rock" value="rock" name="pick">
+           <lable for="rock">stone rock </lable>
+
+           <input  type="radio" id="paper" value="paper" name="pick">
+           <lable for="paper">pepper paper </lable>
+
+           <input  type="radio" id="scissors" value="scissors" name="pick">
+           <lable for="scissors">scisssrs scissors</lable>
+       </div>
         
-        <script src="" async defer></script>
+        
+        <script src="" async defer>
+
+        </script>
     </body>
 </html>
