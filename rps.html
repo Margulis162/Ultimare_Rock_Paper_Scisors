@@ -30,27 +30,41 @@
             display:flex;
             flex-direction: column;
         }
-      
+
+        button{
+            width:fit-content;
+            padding: 5px 10px;
+        }
+       
         </style>
     </head>
     <body>
+
        <div class="input">
         <p>Choose Your Fighter</p>
             <!--so the name property is here to make em work together-->
             <div>
                 <input  type="radio" id="rock" value="rock" name="pick">
-                <lable for="rock">metal rock </lable>
+                <lable for="rock">rock </lable>
             </div>
                 
             <div>
                 <input  type="radio" id="paper" value="paper" name="pick">
-                <lable for="paper">pepper paper </lable>
+                <lable for="paper">paper </lable>
             </div>
 
             <div>
                 <input  type="radio" id="scissors" value="scissors" name="pick">
-                <lable for="scissors">scisssrs scissors</lable>
+                <lable for="scissors">scissors</lable>
             </div>
+            <button id="play">play</button>
+       </div>
+
+
+       <div id="output">
+            <p id="result">
+
+            </p>
        </div>
         
         
@@ -58,19 +72,66 @@
             //vars
             const RPSList = ["rock", "paper", "scissors"];
             const input = document.querySelector('input');
-            document.getElementById('rock').checked = true;
-            let userPick = document.querySelector('input[name="pick"]:checked').value;
+            const btn = document.getElementById('play');
+            const rslt = document.getElementById('result');
 
-            //to get a random value from RPSList
-            console.log(userPick);
+            //default selection for input
+            document.getElementById('rock').checked = true;
+            //user input set to default
+            let userPick = document.querySelector('input[name="pick"]:checked').value;
+             
+         
 
             //functions and snippets 
-            function ComputerPick() {
-                const randValueRPS = RPSList[Math.floor(Math.random()*RPSList.length)];
-                console.log(randValueRPS);
-            }
 
-            ComputerPick()
+                //computer pseudorandom choice
+                function computerPick() {
+                    const randValueRPS = RPSList[Math.floor(Math.random()*RPSList.length)];
+                    return randValueRPS
+                }
+                
+                //game processor lol
+                function game(){
+                    //var
+                    const compTurn = computerPick();
+                    userPick = document.querySelector('input[name="pick"]:checked').value;
+                    //I wanted to use a switch, since i never did before
+                switch(true){
+
+                    //draw
+                    case (userPick === compTurn) :
+                        rslt.textContent ="It's a draw";
+                        console.log(userPick, compTurn);
+                        break;
+
+                    //loose
+                    case (userPick === "rock" && compTurn === "paper"):
+                    case (userPick === 'paper' && compTurn === 'scissors'):
+                    case (userPick === 'scissors' && compTurn === 'rock'):
+                    rslt.textContent = 'Computer Wins!'
+                    console.log(userPick, compTurn);
+                        break;
+
+                    //win
+                    case (userPick === "rock" && compTurn === "scissors"):
+                    case (userPick === 'paper' && compTurn === 'rock'):
+                    case (userPick === 'scissors' && compTurn === 'paper'):
+                    rslt.textContent = 'You Win!'
+                    console.log(userPick, compTurn);
+                        break;
+
+                    default:
+                        rslt.textContent ="wut?"
+
+                        console.log(userPick, compTurn);
+                }
+
+                    
+                }
+
+              btn.addEventListener('click', game);
+                
+            
         </script>
     </body>
 </html>
