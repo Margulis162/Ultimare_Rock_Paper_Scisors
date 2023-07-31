@@ -14,7 +14,7 @@
 
         <!--CSS-->
         <style>
-
+            /* resert */
             html{
                 margin:0px;
                 padding:0px;
@@ -26,26 +26,51 @@
                 padding:inherit;
                 box-sizing:inherit;
             }
-
-
+        .input{
+            display:flex;
+            flex-direction: column;
+        }
+      
         </style>
     </head>
     <body>
        <div class="input">
+        <p>Choose Your Fighter</p>
             <!--so the name property is here to make em work together-->
-           <input  type="radio" id="rock" value="rock" name="pick">
-           <lable for="rock">stone rock </lable>
+            <div>
+                <input  type="radio" id="rock" value="rock" name="pick">
+                <lable for="rock">metal rock </lable>
+            </div>
+                
+            <div>
+                <input  type="radio" id="paper" value="paper" name="pick">
+                <lable for="paper">pepper paper </lable>
+            </div>
 
-           <input  type="radio" id="paper" value="paper" name="pick">
-           <lable for="paper">pepper paper </lable>
-
-           <input  type="radio" id="scissors" value="scissors" name="pick">
-           <lable for="scissors">scisssrs scissors</lable>
+            <div>
+                <input  type="radio" id="scissors" value="scissors" name="pick">
+                <lable for="scissors">scisssrs scissors</lable>
+            </div>
        </div>
         
         
-        <script src="" async defer>
+        <script>
+            //vars
+            const RPSList = ["rock", "paper", "scissors"];
+            const input = document.querySelector('input');
+            document.getElementById('rock').checked = true;
+            let userPick = document.querySelector('input[name="pick"]:checked').value;
 
+            //to get a random value from RPSList
+            console.log(userPick);
+
+            //functions and snippets 
+            function ComputerPick() {
+                const randValueRPS = RPSList[Math.floor(Math.random()*RPSList.length)];
+                console.log(randValueRPS);
+            }
+
+            ComputerPick()
         </script>
     </body>
 </html>
