@@ -47,10 +47,10 @@
                 width:100px;
                 padding: 5px 10px;
             }
-
+/* 
             #result{
                 
-            }
+            } */
             
             h1{
             margin:30px auto;
@@ -102,11 +102,32 @@
                 display:none;
                 max-width: 40%;
                 max-height: fit-content;
-                margin: auto auto auto 0px;
+               
+               
             }
             #playerHand{
-                display:none;
+                max-width: 100%;
+                max-height: 100%;
 
+            }
+
+            #computerMove{
+                display:none;
+                max-width: 40%;
+                max-height: fit-content;
+                margin-right:0px; 
+              
+               
+            }
+            #computerHand{
+                max-width: 100%;
+                max-height: 100%;
+
+            }
+
+            #hands{
+                display:flex;
+                justify-content: space-between;
             }
         </style>
     </head>
@@ -141,8 +162,13 @@
        </div>
        <!--initial image-->
        <div id='imageInitial'><img id='start' src="img/start.png"></div>
-       <div id="playerMove"><img id='playerHand' src=""></div>
+        <div id="hands">
 
+            <div id="playerMove"><img id='playerHand' src="img/scisors_left.png"></div>
+            
+            <div id="computerMove"><img id='computerHand' src="img/scisors_right.png"></div>
+        </div>
+            
 
         <hr>
         
@@ -207,8 +233,15 @@
 
                     //the snippet which changes the images 
                     if((compTurn !=="") && (userPick !=="")){
+
+                        //vars
                         const initialImg = document.getElementById('imageInitial');
+                        const newImgPlayer = document.getElementById('playerMove');
+                        const newImgComputer = document.getElementById('computerMove')
+
                         initialImg.style.display = 'none';
+                        newImgPlayer.style.display ='inline-block';
+                        newImgComputer.style.display ='inline-block';
                     }
                 }
 
