@@ -14,34 +14,107 @@
 
         <!--CSS-->
         <style>
+
             /* resert */
             html{
                 margin:0px;
                 padding:0px;
                 box-sizing: border-box;
+                line-height: 1.8em;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color:rgb(80, 6, 6);
             }
 
             *, *::before, *::after{
                 margin:inherit;
                 padding:inherit;
                 box-sizing:inherit;
+                line-height: inherit;
             }
-        .input{
-            display:flex;
-            flex-direction: column;
-        }
+             
+            /* elements ids classes */
+            body{
+                background-color:rgb(253, 212, 253);
+                max-height: 100vh;
+            }
+            .input{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
 
-        button{
+            button{
+                width:100px;
+                padding: 5px 10px;
+            }
+
+            #result{
+                
+            }
+            
+            h1{
+            margin:30px auto;
+            border-bottom: 3px solid red;
+            border-top: 3px solid red;
             width:fit-content;
-            padding: 5px 10px;
-        }
-       
+            padding: 10px 0px;
+            color: white;
+            text-shadow: 0px 0px 1px magenta, -0px -0px 1px magenta ;
+            
+
+            }
+           span{
+            color:red;
+            padding: 0px 5px;
+           }
+            hr{
+                height: 2px;
+                background-color:red;
+                max-width: 90%;
+                border:none;
+                margin: 0px auto 10px auto; 
+            }
+            #first{
+                font-weight: bold;
+                letter-spacing: .05em;
+            }
+            #output{
+                max-width: 50%;
+                margin: 10px auto 0px auto;
+            }
+            #result{
+                max-width: fit-content;
+                margin:inherit;
+                font-size:45px;
+                font-weight: bolder;
+                color:red;
+            }
+            #imageInitial{
+                max-width: 100vw;
+                max-height: fit-content;
+            }
+            #start{
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            #playerMove{
+                display:none;
+                max-width: 40%;
+                max-height: fit-content;
+                margin: auto auto auto 0px;
+            }
+            #playerHand{
+                display:none;
+
+            }
         </style>
     </head>
     <body>
-
+       <h1> <span>!</span>Ureal RPS Tournament<span>!</span></h1>
+       <hr>
        <div class="input">
-        <p>Choose Your Fighter</p>
+        <p id="first" >Choose Your Fighter:</p>
             <!--so the name property is here to make em work together-->
             <div>
                 <input  type="radio" id="rock" value="rock" name="pick">
@@ -66,7 +139,12 @@
 
             </p>
        </div>
-        
+       <!--initial image-->
+       <div id='imageInitial'><img id='start' src="img/start.png"></div>
+       <div id="playerMove"><img id='playerHand' src=""></div>
+
+
+        <hr>
         
         <script>
             //vars
@@ -79,6 +157,7 @@
             document.getElementById('rock').checked = true;
             //user input set to default
             let userPick = document.querySelector('input[name="pick"]:checked').value;
+
              
          
 
@@ -92,41 +171,45 @@
                 
                 //game processor lol
                 function game(){
+
                     //var
                     const compTurn = computerPick();
                     userPick = document.querySelector('input[name="pick"]:checked').value;
+
                     //I wanted to use a switch, since i never did before
-                switch(true){
+                    switch(true){
 
-                    //draw
-                    case (userPick === compTurn) :
-                        rslt.textContent ="It's a draw";
+                        //draw
+                        case (userPick === compTurn) :
+                            rslt.textContent ="It's a draw";
+                            console.log(userPick, compTurn);
+                            break;
+
+                        //loose
+                        case (userPick === "rock" && compTurn === "paper"):
+                        case (userPick === 'paper' && compTurn === 'scissors'):
+                        case (userPick === 'scissors' && compTurn === 'rock'):
+                        rslt.textContent = 'Computer Wins!'
                         console.log(userPick, compTurn);
-                        break;
+                            break;
 
-                    //loose
-                    case (userPick === "rock" && compTurn === "paper"):
-                    case (userPick === 'paper' && compTurn === 'scissors'):
-                    case (userPick === 'scissors' && compTurn === 'rock'):
-                    rslt.textContent = 'Computer Wins!'
-                    console.log(userPick, compTurn);
-                        break;
-
-                    //win
-                    case (userPick === "rock" && compTurn === "scissors"):
-                    case (userPick === 'paper' && compTurn === 'rock'):
-                    case (userPick === 'scissors' && compTurn === 'paper'):
-                    rslt.textContent = 'You Win!'
-                    console.log(userPick, compTurn);
-                        break;
-
-                    default:
-                        rslt.textContent ="wut?"
-
+                        //win
+                        case (userPick === "rock" && compTurn === "scissors"):
+                        case (userPick === 'paper' && compTurn === 'rock'):
+                        case (userPick === 'scissors' && compTurn === 'paper'):
+                        rslt.textContent = 'You Win!'
                         console.log(userPick, compTurn);
-                }
+                            break;
 
-                    
+
+                
+                    }
+
+                    //the snippet which changes the images 
+                    if((compTurn !=="") && (userPick !=="")){
+                        const initialImg = document.getElementById('imageInitial');
+                        initialImg.style.display = 'none';
+                    }
                 }
 
               btn.addEventListener('click', game);
