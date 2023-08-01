@@ -164,9 +164,9 @@
        <div id='imageInitial'><img id='start' src="img/start.png"></div>
         <div id="hands">
 
-            <div id="playerMove"><img id='playerHand' src="img/scisors_left.png"></div>
+            <div id="playerMove"><img id='playerHand' src="img/scissors_left.png"></div>
             
-            <div id="computerMove"><img id='computerHand' src="img/scisors_right.png"></div>
+            <div id="computerMove"><img id='computerHand' src="img/scissors_right.png"></div>
         </div>
             
 
@@ -208,15 +208,15 @@
                         //draw
                         case (userPick === compTurn) :
                             rslt.textContent ="It's a draw";
-                            console.log(userPick, compTurn);
+                            
                             break;
 
                         //loose
                         case (userPick === "rock" && compTurn === "paper"):
                         case (userPick === 'paper' && compTurn === 'scissors'):
                         case (userPick === 'scissors' && compTurn === 'rock'):
-                        rslt.textContent = 'Computer Wins!'
-                        console.log(userPick, compTurn);
+                        rslt.textContent = 'Computer Wins!';
+                        
                             break;
 
                         //win
@@ -224,7 +224,7 @@
                         case (userPick === 'paper' && compTurn === 'rock'):
                         case (userPick === 'scissors' && compTurn === 'paper'):
                         rslt.textContent = 'You Win!'
-                        console.log(userPick, compTurn);
+                        
                             break;
 
 
@@ -232,7 +232,7 @@
                     }
 
                     //the snippet which changes the images 
-                    if((compTurn !=="") && (userPick !=="")){
+                    if(compTurn && userPick){
 
                         //vars
                         const initialImg = document.getElementById('imageInitial');
@@ -242,14 +242,48 @@
                         initialImg.style.display = 'none';
                         newImgPlayer.style.display ='inline-block';
                         newImgComputer.style.display ='inline-block';
+
+                        switch(true){
+                            
+                            case userPick === 'scissors':
+                            document.getElementById('playerHand').src ='img/scissors_left.png';
+                            break;
+
+                            case userPick === 'rock':
+                            document.getElementById('playerHand').src ='img/rock_left.png';
+                            break;
+
+                            case userPick === 'paper':
+                            document.getElementById('playerHand').src ='img/paper_left.png';
+                            break;
+                        }
+
+                            switch(true){
+                            
+                            case compTurn === 'scissors':
+                            document.getElementById('computerHand').src ='img/scissors_right.png';
+                            break;
+
+                            case compTurn === 'rock':
+                            document.getElementById('computerHand').src ='img/rock_right.png';
+                            break;
+
+                            case compTurn === 'paper':
+                            document.getElementById('computerHand').src ='img/paper_right.png';
+                            break;
+
+                           
+                            
+
+                            
+                        }
                     }
                 }
 
               btn.addEventListener('click', game);
               
-              </script>
-              <!--
-                TODO:prep other images, make them change accordingly to computer and user pick 
-            -->
+        </script>
+
+              
     </body>
 </html>
