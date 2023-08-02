@@ -42,11 +42,19 @@
                 flex-direction: row;
                 justify-content: space-around;
             }
-
+            
             button{
                 width:100px;
                 padding: 5px 10px;
+                border:none;
+                background-color:rgb(253, 212, 253);
+                color: red;
+                letter-spacing: 0.05em ;
+                border: 3px solid red;
+                font-size: large;
+                
             }
+            
 /* 
             #result{
                 
@@ -57,10 +65,11 @@
             border-bottom: 3px solid red;
             border-top: 3px solid red;
             width:fit-content;
-            padding: 10px 0px;
+            
+            padding: 20px 3px;
             color: white;
             text-shadow: 0px 0px 1px magenta, -0px -0px 1px magenta ;
-            
+            font-size: 70px;
 
             }
            span{
@@ -68,7 +77,7 @@
             padding: 0px 5px;
            }
             hr{
-                height: 2px;
+                height: 3px;
                 background-color:red;
                 max-width: 90%;
                 border:none;
@@ -77,6 +86,8 @@
             #first{
                 font-weight: bold;
                 letter-spacing: .05em;
+                font-size:large;
+               
             }
             #output{
                 max-width: 50%;
@@ -129,6 +140,11 @@
                 display:flex;
                 justify-content: space-between;
             }
+            
+            .short{
+                width:30%;
+                margin-top:40px;
+            }
         </style>
     </head>
     <body>
@@ -171,6 +187,7 @@
             
 
         <hr>
+        <hr class ="short">
         
         <script>
             //vars
